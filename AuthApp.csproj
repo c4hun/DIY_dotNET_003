@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+
+  <ItemGroup>
+	<ProjectReference Include="..\DIY_dotNET_001\Todo.csproj" />
+  </ItemGroup>
+
 </Project>

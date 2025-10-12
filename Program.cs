@@ -1,6 +1,12 @@
+using Todo.Repositories;  // Pour IUserRepository
+using Todo.Services;  // Pour AuthService
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Enregistrer les services de Todo dans l'injection de dépendances
+builder.Services.AddScoped<AuthService>();  // Si AuthService est dans Todo.Services
+builder.Services.AddScoped<IUserRepository, InMemoryUserRepository>();  // Exemple pour IUserRepository
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -9,20 +15,15 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseRouting();
-
 app.UseAuthorization();
-
-app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Login}/{action=Index}/{id?}");
-
 
 app.Run();

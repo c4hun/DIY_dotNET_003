@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DIY_dotNET_001.Repositories;  // Mise à jour du namespace pour les repositories
+using DIY_dotNET_001.Services;  // Mise à jour du namespace pour correspondre au projet
+using Microsoft.AspNetCore.Mvc;
 using AuthApp.Services;
 
 namespace AuthApp.Controllers
